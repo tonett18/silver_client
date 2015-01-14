@@ -9,18 +9,23 @@ import patientsimple.PatientData;
 public class test {
 	
 	// Create the data of the patient
-	static PatientData readPatient(){
+	public static PatientData readPatient(){
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the identier of the patient");
-		int idpatient=sc.nextInt();
-		System.out.println("Enter the weight of the patient");
-		int weight=sc.nextInt();
-		System.out.println("Enter the blood pressure of the patient");
-		int bloodPressure=sc.nextInt();
-		System.out.println("Enter the date of the measures");
-		String dateMeasure=sc.next();
+		char reponse = 'o'; int idpatient = 0, weight = 0, bloodPressure = 0; String dateMeasure = "01-01-2010";
+		while (reponse == 'o') {
+			System.out.println("Enter the identier of the patient");
+			idpatient=sc.nextInt();
+			System.out.println("Enter the weight of the patient");
+			weight=sc.nextInt();
+			System.out.println("Enter the blood pressure of the patient");
+			bloodPressure=sc.nextInt();
+			System.out.println("Enter the date of the measures");
+			dateMeasure=sc.next();
+			System.out.println("Voulez-vous réessayer ? (O/N)");
+			reponse = sc.next().charAt(0); 
+		}
 		PatientData newpatient=new PatientData(idpatient,weight,bloodPressure,dateMeasure);
-			return newpatient; 
+		return newpatient;
 	}
 	/**
 	 * @param args
@@ -38,7 +43,7 @@ public class test {
 		try {
 	 
 			// convert aPatient object to json string, and save to a file
-			mapper.writeValue(new File("c:\\aPatient.json"), aPatient);
+			mapper.writeValue(new File("c:\\file.json"), aPatient);
 	 
 			// display to console
 			System.out.println(mapper.writeValueAsString( aPatient));

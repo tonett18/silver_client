@@ -50,7 +50,7 @@ public class PatientData {
 	}
 	
 	public void postdata(){
-		System.out.println("The data patient are:");
+		System.out.println("The patient's data are:");
 		System.out.println("identifier:"+this.idPatient);
 		System.out.println("weight:"+this.weight);
 		System.out.println("bloodPressure:"+this.bloodPressure);
