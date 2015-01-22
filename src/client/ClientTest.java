@@ -27,22 +27,16 @@ public class ClientTest {
 
 		try {
 			
-		     socket = new Socket(InetAddress.getLocalHost(),2001);	
-		     System.out.println("Demande de connexion");
+		     socket = new Socket(InetAddress.getLocalHost(),10001);	
 		     readerFile = new BufferedReader (new FileReader ("c:\\file.json"));
 		     entry = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              output = new PrintStream(socket.getOutputStream());
-             System.out.println("Je ne suis pas encore dans la boucle");
-	         while ((line = readerFile.readLine()) != null) output.print(line);
+	         while ((line = readerFile.readLine()) != null) output.println(line);
 	         output.println("+");
-	         System.out.println("Je suis dans la boucle");
 	         System.out.println(entry.readLine()); 
-	         System.out.println("Erreur");
 	         output.close();
-	         System.out.println("Erreur bis");
 	         entry.close();
 	         socket.close();
-	         //System.out.println("Erreur ter");
 		}catch (FileNotFoundException e){
 			
 			System.out.println("Fichier introuvable");
@@ -50,10 +44,12 @@ public class ClientTest {
 		catch (UnknownHostException e) {
 			
 			e.printStackTrace();
+			System.out.println("Destinataire introuvable");
 		}
 		catch (IOException e) {
 			
 			e.printStackTrace();
+			System.out.println("entree-sotie introuvable");
 		}
 	
 	}

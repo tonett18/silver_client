@@ -35,10 +35,10 @@ import java.net.Socket;
 
 
 			try {
-				texte = entry.readLine();
 				while(!(texte = entry.readLine()).equals("+")) 
 	                               
 				System.out.println("ECHO = " + texte);
+				output.flush();
 				output.close();
 				entry.close();
 				socket.close();
@@ -54,7 +54,7 @@ class DroolsTest1 {
 		ServerSocket socketserver ;
 		Socket socketduserveur ;
 		try {
-			socketserver = new ServerSocket(2001);
+			socketserver = new ServerSocket(10001);
 			System.out.println("Le serveur est à l'écoute du port "+socketserver.getLocalPort());
 			while (true){
 				socketduserveur = socketserver.accept();
